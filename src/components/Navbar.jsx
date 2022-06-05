@@ -16,12 +16,13 @@ function Navbar() {
 
       {isLoggedIn ? (
         <nav>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">Inicio</NavLink>
+          <NavLink to="/new-book">Nuevo libro</NavLink>
           <button onClick={handleLogout}>Cerrar sesión</button>
         </nav>
       ) : (
         <nav>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/">Inicio</NavLink>
           <NavLink to="/login">Login</NavLink>
           <NavLink to="/signup">Signup</NavLink>
         </nav>

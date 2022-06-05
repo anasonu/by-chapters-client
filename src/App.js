@@ -1,10 +1,16 @@
-import { Route, Routes } from 'react-router-dom';
-import './App.css';
-import Navbar from './components/Navbar';
-import Login from './pages/auth/Login';
-import Signup from './pages/auth/Signup';
-import Home from './pages/Home';
-import Error from './pages/Error';
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import Login from "./pages/auth/Login";
+import Signup from "./pages/auth/Signup";
+import Home from "./pages/Home";
+import Error from "./pages/Error";
+import AddBook from "./pages/AddBook";
+import BookDetail from "./pages/BookDetail";
+import ChapterDetail from "./pages/ChapterDetail";
+import NotFound from "./pages/NotFound";
+import Profile from "./pages/Profile";
+import IsPrivate from "./components/IsPrivate";
 
 function App() {
   return (
@@ -12,11 +18,37 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={ <Home /> } />
-        <Route path="/login" element={ <Login /> } />
-        <Route path="/signup" element={ <Signup /> } />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/books/:id" element={<BookDetail />} />
+        <Route
+          path="/new-book"
+          element={
+            <IsPrivate>
+              <AddBook />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/books/:bookId/:ChapterId"
+          element={
+            <IsPrivate>
+              <ChapterDetail />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <IsPrivate>
+              <Profile />
+            </IsPrivate>
+          }
+        />
 
-        <Route path="/error" element={ <Error /> } />
+        <Route path="/error" element={<Error />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </div>
   );
