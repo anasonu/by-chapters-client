@@ -222,6 +222,19 @@ body {
   margin-top: 56px;
 }
 
+.book-detail-img {
+  margin-bottom: 24px;
+}
+
+.book-detail-title {
+  margin: 0;
+}
+
+.book-detail-author {
+  margin: 8px 0 32px 0;
+  font-size: 16px;
+}
+
 .flex-space-between {
   display: flex;
   justify-content: space-between;
