@@ -7,21 +7,24 @@ function AddBook() {
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  // const [img, setImg] = useState(null);
+  const [img, setImg] = useState("");
 
-  // const handleImgChange = (event) => setImg(event.target.value);
   const handleTitleChange = (event) => setTitle(event.target.value);
   const handleDescriptionChange = (event) => setDescription(event.target.value);
+
+  const handleImgChange = (event) => {
+    const file = event.target.files[0];
+    setImg(file);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const newBook = {
-        // img,
-        title,
-        description,
-      };
+      const newBook = new FormData();
+      newBook.append("img", img);
+      newBook.append("title", title);
+      newBook.append("description", description);
 
       await addBookService(newBook);
       navigate("/");
@@ -35,7 +38,8 @@ function AddBook() {
       <h2>Crea tu propio libro</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="img">Imagen de portada</label>
-        <input type="text" name="img" />
+        <br />
+        <input type="file" name="img" onChange={handleImgChange} />
         <br />
         <br />
         <label htmlFor="title">Título del libro</label>
