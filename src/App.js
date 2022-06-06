@@ -11,6 +11,7 @@ import ChapterDetail from "./pages/ChapterDetail";
 import NotFound from "./pages/NotFound";
 import Profile from "./pages/Profile";
 import IsPrivate from "./components/IsPrivate";
+import AddChapter from "./pages/AddChapter";
 
 function App() {
   return (
@@ -27,6 +28,14 @@ function App() {
           element={
             <IsPrivate>
               <AddBook />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/books/:bookId/new-chapter"
+          element={
+            <IsPrivate>
+              <AddChapter />
             </IsPrivate>
           }
         />

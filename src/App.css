@@ -268,6 +268,11 @@ body {
   margin-top: 40px;
 }
 
+.chapter-list-intro {
+  color: #b4b7be;
+  /* font-weight: normal; */
+}
+
 .all-chapters-container {
   display: flex;
   flex-direction: column-reverse;

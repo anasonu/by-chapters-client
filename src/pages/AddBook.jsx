@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { addBookService } from '../services/book.services';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { addBookService } from "../services/book.services";
 
 function AddBook() {
   const navigate = useNavigate();
@@ -39,17 +39,28 @@ function AddBook() {
         <br />
         <br />
         <label htmlFor="title">Título del libro</label>
-        <input type="text" name="title" onChange={handleTitleChange} value={title} />
+        <input
+          type="text"
+          name="title"
+          onChange={handleTitleChange}
+          value={title}
+        />
         <br />
         <br />
         <label htmlFor="description">¿Sobre qué trata tu libro?</label>
-        <textarea name="description" cols="30" rows="10" onChange={handleDescriptionChange} value={description}></textarea>
+        <textarea
+          name="description"
+          cols="30"
+          rows="10"
+          onChange={handleDescriptionChange}
+          value={description}
+        ></textarea>
         <br />
         <br />
         <button>Crear libro</button>
       </form>
     </div>
-  )
+  );
 }
 
-export default AddBook
+export default AddBook;

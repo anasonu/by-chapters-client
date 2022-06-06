@@ -4,8 +4,8 @@ const getAllChaptersService = (bookId) => {
     return service.get(`/chapters/${bookId}`);
 };
 
-const addChapterService = (bookId, chapterId, chapter) => {
-    return service.post(`/chapters/${bookId}/${chapterId}`, chapter);
+const addChapterService = (bookId, chapter) => {
+    return service.post(`/chapters/${bookId}/new-chapter`, chapter);
 };
 
 const getChapterDetailService = (chapterId) => {

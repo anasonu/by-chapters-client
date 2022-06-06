@@ -29,13 +29,13 @@ function ChaptersList() {
 
   return (
     <div className="chapters-component-container">
-      <h4>Capítulos disponibles: </h4>
+      <h4 className="chapter-list-intro">Capítulos disponibles: </h4>
       <div className="all-chapters-container">
         {allChapters !== null &&
           allChapters.map((eachChapter) => {
             return (
               <div key={eachChapter._id}>
-                <Link to={`/books/${bookId}/${eachChapter._id}`}>{eachChapter.title}</Link>
+                <Link to={`/books/${bookId}/${eachChapter._id}`}>· {eachChapter.title}</Link>
               </div>
             );
           })}
