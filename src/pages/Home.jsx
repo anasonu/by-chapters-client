@@ -17,11 +17,7 @@ function Home() {
       const response = await getAllBooksService();
       setAllBooks(response.data);
     } catch (error) {
-      if (error.response.status === 401) {
-        navigate("/login");
-      } else {
-        navigate("/error");
-      }
+      navigate("/error");
     }
   };
 

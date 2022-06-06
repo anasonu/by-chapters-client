@@ -78,11 +78,22 @@ body {
   text-decoration: none;
   background-color: #2d2f31;
   padding: 16px;
+  position: relative;
+}
+
+.new-book-btn:hover {
+  box-shadow: 2px 2px 4px #979798;
+  top: -2px;
+  left: -2px;
+}
+
+.new-book-btn:active {
+  box-shadow: none;
+  top: 0;
+  left: 0;
 }
 
 .dropbtn {
-  /* padding: 16px; */
-  /* font-size: 16px; */
   font-size: 16px;
   font-weight: bold;
   background-color: white;
@@ -152,7 +163,6 @@ body {
   border-radius: 20px;
   background-color: white;
   position: relative;
-  transition: top 0.3s, left 0.3s, box-shadow 0.3s;
 }
 
 .book-link {
@@ -164,6 +174,12 @@ body {
   top: -5px;
   left: -5px;
   box-shadow: 5px 5px 5px #d5d5d5;
+}
+
+.book-container:active {
+  box-shadow: none;
+  top: 0;
+  left: 0;
 }
 
 .book-text-container {
@@ -197,4 +213,60 @@ body {
   .book-text-container {
     text-align: left;
   }
+}
+
+.book-detail-container {
+  max-width: 60vw;
+  margin: 0 auto;
+  text-align: left;
+  margin-top: 56px;
+}
+
+.flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-chapter-btn {
+  border: none;
+  background-color: #2D2E31;
+  color: white;
+  font-weight: bold;
+  padding: 10px 24px;
+  border-radius: 4px;
+  position: relative;
+  cursor: pointer;
+}
+
+.add-chapter-btn:hover {
+  box-shadow: 2px 2px 4px #979798;
+  top: -2px;
+  left: -2px;
+}
+
+.add-chapter-btn:active {
+  box-shadow: none;
+  top: 0;
+  left: 0;
+}
+
+.chapters-component-container {
+  margin-top: 40px;
+}
+
+.all-chapters-container {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+}
+
+.all-chapters-container a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.all-chapters-container a:hover {
+  color: #F03E3E;
 }
