@@ -40,7 +40,7 @@ function App() {
           }
         />
         <Route
-          path="/books/:bookId/:ChapterId"
+          path="/books/:bookId/:chapterId"
           element={
             <IsPrivate>
               <ChapterDetail />

@@ -41,7 +41,7 @@ function AddChapter() {
         <textarea name="content" cols="30" rows="10" onChange={handleContentChange} value={content}></textarea>
         <br />
         <br />
-        <button>Crear libro</button>
+        <button>Publicar capítulo</button>
       </form>
     </div>
   )
