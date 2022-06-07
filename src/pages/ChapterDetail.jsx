@@ -31,7 +31,16 @@ function ChapterDetail() {
       <Link to={`/books/${bookId}`} className="chapter-detail-book-title">← {chapterDetail.book.title}</Link>
       <br />
       <h3>{chapterDetail.title}</h3>
-      <p>{chapterDetail.content}</p>
+      {/* <p>{chapterDetail.content}</p> */}
+      {/* <p>{chapterDetail.content.blocks[0].text}</p> */}
+      {
+        chapterDetail.content.blocks.map((eachParagraph) => {
+          return <p>{eachParagraph.text}</p>
+        })
+      }
+
+
+      {/* <p>{JSON.parse(chapterDetail.content.blocks)}</p> */}
     </div>
   );
 }
