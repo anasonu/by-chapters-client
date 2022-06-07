@@ -27,8 +27,8 @@ function ChapterDetail() {
   }
 
   return (
-    <div>
-      <Link to={`/books/${bookId}`}>← {chapterDetail.book.title}</Link>
+    <div className="chapter-detail-container">
+      <Link to={`/books/${bookId}`} className="chapter-detail-book-title">← {chapterDetail.book.title}</Link>
       <br />
       <h3>{chapterDetail.title}</h3>
       <p>{chapterDetail.content}</p>

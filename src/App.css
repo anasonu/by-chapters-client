@@ -289,3 +289,34 @@ body {
 .all-chapters-container a:hover {
   color: #F03E3E;
 }
+
+.all-chapters-container a:active {
+  color: black;
+}
+
+.chapter-detail-container {
+  text-align: left;
+  width: 80vw;
+  margin: 32px auto;
+}
+
+.chapter-detail-book-title {
+  text-decoration: none;
+  color: black;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.chapter-detail-book-title:hover {
+  color: #F03E3E;
+}
+
+.chapter-detail-book-title:active {
+  color: black;
+}
+
+.chapter-detail-container h3 {
+  margin-top: 56px;
+  margin-bottom: 32px;
+  font-size: 20px;
+}
