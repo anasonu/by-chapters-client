@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import ChaptersList from "../../components/ChaptersList";
 import { getBookDetailService } from "../../services/book.services";
+import { AuthContext } from "../../context/auth.context.js";
 
 function BookDetail() {
+  const { user } = useContext(AuthContext);
   const { bookId } = useParams();
   const navigate = useNavigate();
 
@@ -33,8 +35,9 @@ function BookDetail() {
 
   return (
     <div className="book-detail-container">
-      <Link to={`/books/${bookId}/edit`}>Editar libro</Link>
-
+      {user._id === bookDetail.author._id && (
+        <Link to={`/books/${bookId}/edit`}>Editar libro</Link>
+      )}
       <img
         src={bookDetail.img}
         alt={bookDetail.title}
@@ -42,9 +45,11 @@ function BookDetail() {
       />
       <div className="flex-space-between">
         <h2 className="book-detail-title">{bookDetail.title}</h2>
-        <button onClick={goToChapterForm} className="add-chapter-btn">
-          + Capítulo
-        </button>
+        {user._id === bookDetail.author._id && (
+          <button onClick={goToChapterForm} className="add-chapter-btn">
+            + Capítulo
+          </button>
+        )}
       </div>
       <h3 className="book-detail-author">{bookDetail.author.username}</h3>
       <p className="book-detail-description">{bookDetail.description}</p>
