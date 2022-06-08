@@ -39,7 +39,7 @@ function Home() {
                   <div className="book-text-container">
                     <p className="book-title">{eachBook.title}</p>
                     <p className="book-author">
-                      Creador por:{" "}
+                      Publicado por:{" "}
                       <span className="author-name">
                         {eachBook.author.username}
                       </span>

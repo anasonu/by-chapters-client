@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import ChaptersList from "../components/ChaptersList";
-import { getBookDetailService } from "../services/book.services";
+import ChaptersList from "../../components/ChaptersList";
+import { getBookDetailService } from "../../services/book.services";
 
 function BookDetail() {
   const { bookId } = useParams();

@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { addChapterService } from '../services/chapter.services';
+import React, { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import MyEditor from "../../components/MyEditor";
+// import TextEditor from "../components/TextEditor";
+import { addChapterService } from "../../services/chapter.services";
+import { convertToRaw } from "draft-js";
 
 function AddChapter() {
   const navigate = useNavigate();
@@ -23,10 +26,15 @@ function AddChapter() {
 
       await addChapterService(bookId, newChapter);
       navigate(`/books/${bookId}`);
-
     } catch (error) {
       navigate("/error");
     }
+  };
+
+  const handleClick = (chapter) => {
+    const content = chapter.getCurrentContent();
+    const raw = convertToRaw(content);
+    setContent(raw);
   };
 
   return (
@@ -34,17 +42,25 @@ function AddChapter() {
       <h2>Agrega un nuevo capítulo a tu libro</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Título del capítulo</label>
-        <input type="text" name="title" onChange={handleTitleChange} value={title} />
+        <input
+          type="text"
+          name="title"
+          onChange={handleTitleChange}
+          value={title}
+        />
         <br />
         <br />
-        <label htmlFor="content">Escribe aquí tu capítulo</label>
-        <textarea name="content" cols="30" rows="10" onChange={handleContentChange} value={content}></textarea>
+        <MyEditor
+          handleClick={handleClick}
+          onChange={handleContentChange}
+          value={content}
+        />
+        {/* <TextEditor handleClick={handleClick} onChange={handleContentChange} value={content} /> */}
         <br />
         <br />
-        <button>Crear libro</button>
       </form>
     </div>
-  )
+  );
 }
 
-export default AddChapter
+export default AddChapter;
