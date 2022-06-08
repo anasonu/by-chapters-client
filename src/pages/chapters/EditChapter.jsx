@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import EditEditor from '../../components/EditEditor';
-import { editChapterService, getChapterDetailService } from '../../services/chapter.services';
+import { deleteChapterService, editChapterService, getChapterDetailService } from '../../services/chapter.services';
 
 function EditChapter() {
   const { bookId, chapterId } = useParams();
@@ -42,6 +42,12 @@ function EditChapter() {
       navigate("/error");
     }
   } 
+
+  const handleDelete = async () => {
+    await deleteChapterService(chapterId);
+    navigate(`/books/${bookId}`)
+  }
+
   return (
     <div>
       <h2>Estás editando tu capítulo</h2>
@@ -56,6 +62,7 @@ function EditChapter() {
           value={content}
         />
       </form> */}
+      <button onClick={handleDelete}>Eliminar capítulo</button>
     </div>
   )
 }

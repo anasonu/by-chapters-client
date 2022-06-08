@@ -32,6 +32,7 @@ function ChapterDetail() {
         ← {chapterDetail.book.title}
       </Link>
       <br />
+      <Link to={`/books/${bookId}/${chapterId}/edit`}>Editar capítulo</Link>
       <h3>{chapterDetail.title}</h3>
 
       {chapterDetail.content.blocks.map((eachParagraph) => {
