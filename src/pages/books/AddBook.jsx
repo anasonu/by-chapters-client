@@ -1,30 +1,38 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { addBookService } from "../../services/book.services";
+import { addBookService, uploadPicService } from "../../services/book.services";
 
 function AddBook() {
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [img, setImg] = useState("");
+  const [img, setImg] = useState();
 
   const handleTitleChange = (event) => setTitle(event.target.value);
   const handleDescriptionChange = (event) => setDescription(event.target.value);
-  const handleImgChange = (event) => {
-    const file = event.target.files[0];
-    setImg(file);
+  const handleImgChange = async (event) => {
+    const uploadForm = new FormData();
+    uploadForm.append("img", event.target.files[0])
+
+    try {
+      const response = await uploadPicService(uploadForm)
+      setImg(response.data)
+    } catch (error) {
+      navigate("/error")
+    }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    try {
-      const newBook = new FormData();
-      newBook.append("img", img);
-      newBook.append("title", title);
-      newBook.append("description", description);
+    const newBook = {
+      title,
+      description,
+      img,
+    }
 
+    try {
       await addBookService(newBook);
       navigate("/");
     } catch (error) {
@@ -39,6 +47,9 @@ function AddBook() {
         <label htmlFor="img">Imagen de portada</label>
         <br />
         <input type="file" name="img" onChange={handleImgChange} />
+        <br />
+        <br />
+        <img src={img} alt="Book Cover" />
         <br />
         <br />
         <label htmlFor="title">Título del libro</label>

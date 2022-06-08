@@ -20,10 +20,20 @@ const deleteBookService = (id) => {
   return service.delete(`/books/${id}`);
 };
 
+const uploadPicService = (uploadForm) => {
+  return service.post("/uploader", uploadForm);
+}
+
+// const EditPicService = (uploadForm) => {
+//   return service.patch("/uploader/edit", uploadForm);
+// }
+
 export {
   getAllBooksService,
   addBookService,
   getBookDetailService,
   editBookService,
   deleteBookService,
+  uploadPicService,
+  // EditPicService,
 };
