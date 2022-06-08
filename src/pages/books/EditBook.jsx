@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { editBookService, EditPicService, getBookDetailService, uploadPicService } from "../../services/book.services";
+import { deleteBookService, editBookService, EditPicService, getBookDetailService, uploadPicService } from "../../services/book.services";
 
 function EditBook() {
   const { bookId } = useParams();
@@ -61,6 +61,15 @@ function EditBook() {
       }
   }
 
+  const handleDelete = async () => {
+    try {
+      await deleteBookService(bookId);
+      navigate("/");
+    } catch (error) {
+      navigate("/error")
+    }
+  } 
+
   return (
     <div>
       <h2>Modifica los detalles de tu libro</h2>
@@ -94,6 +103,7 @@ function EditBook() {
         <br />
         <button>Editar detalles de libro</button>
       </form>
+      <button onClick={handleDelete}>Eliminar libro</button>
     </div>
   );
 }

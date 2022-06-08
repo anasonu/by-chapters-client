@@ -24,10 +24,6 @@ const uploadPicService = (uploadForm) => {
   return service.post("/uploader", uploadForm);
 }
 
-// const EditPicService = (uploadForm) => {
-//   return service.patch("/uploader/edit", uploadForm);
-// }
-
 export {
   getAllBooksService,
   addBookService,
@@ -35,5 +31,4 @@ export {
   editBookService,
   deleteBookService,
   uploadPicService,
-  // EditPicService,
 };
