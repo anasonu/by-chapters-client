@@ -1,8 +1,9 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { addBookService } from "../services/book.services";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { editBookService, getBookDetailService } from "../../services/book.services";
 
-function AddBook() {
+function EditBook() {
+  const { bookId } = useParams();
   const navigate = useNavigate();
 
   const [title, setTitle] = useState("");
@@ -11,32 +12,47 @@ function AddBook() {
 
   const handleTitleChange = (event) => setTitle(event.target.value);
   const handleDescriptionChange = (event) => setDescription(event.target.value);
-
   const handleImgChange = (event) => {
     const file = event.target.files[0];
     setImg(file);
   };
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+      event.preventDefault();
 
-    try {
-      const newBook = new FormData();
-      newBook.append("img", img);
-      newBook.append("title", title);
-      newBook.append("description", description);
+      try {
+        const editBook = new FormData();
+        editBook.append("img", img);
+        editBook.append("title", title);
+        editBook.append("description", description);
 
-      await addBookService(newBook);
-      navigate("/");
-    } catch (error) {
-      navigate("/error");
-    }
-  };
+        await editBookService(bookId, editBook)
+        navigate(`/books/${bookId}`);
+      } catch (error) {
+          navigate("/error");
+      }
+  }
+
+  useEffect(() => {
+    getBookDetails();
+  }, []);
+
+  const getBookDetails = async () => {
+      try {
+          const response = await getBookDetailService(bookId);
+          const { title, description, img } = response.data;
+          setTitle(title);
+          setDescription(description);
+          setImg(img);
+      } catch (error) {
+          navigate("/error");
+      }
+  }
 
   return (
     <div>
-      <h2>Crea tu propio libro</h2>
-      <form onSubmit={handleSubmit}>
+      <h2>Modifica los detalles de tu libro</h2>
+      {/* <form onSubmit={handleSubmit}>
         <label htmlFor="img">Imagen de portada</label>
         <br />
         <input type="file" name="img" onChange={handleImgChange} />
@@ -62,9 +78,9 @@ function AddBook() {
         <br />
         <br />
         <button>Crear libro</button>
-      </form>
+      </form> */}
     </div>
   );
 }
 
-export default AddBook;
+export default EditBook;

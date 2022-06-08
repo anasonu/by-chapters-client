@@ -1,5 +1,5 @@
 import React from 'react';
-import {Editor, EditorState, getDefaultKeyBinding, RichUtils, convertToRaw} from 'draft-js';
+import { Editor, EditorState, getDefaultKeyBinding, RichUtils } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 import "../../node_modules/draft-js/dist/Draft.css"
 
@@ -152,9 +152,9 @@ class TextEditor extends React.Component {
     {label: 'H4', style: 'header-four'},
     {label: 'H5', style: 'header-five'},
     {label: 'H6', style: 'header-six'},
-    {label: 'Quote', style: 'blockquote'},
-    {label: 'UL', style: 'unordered-list-item'},
-    {label: 'OL', style: 'ordered-list-item'},
+    // {label: 'Quote', style: 'blockquote'},
+    // {label: 'UL', style: 'unordered-list-item'},
+    // {label: 'OL', style: 'ordered-list-item'},
   ];
 
   const BlockStyleControls = (props) => {
@@ -185,7 +185,7 @@ class TextEditor extends React.Component {
     {label: 'Bold', style: 'BOLD'},
     {label: 'Italic', style: 'ITALIC'},
     {label: 'Underline', style: 'UNDERLINE'},
-    {label: 'Monospace', style: 'CODE'},
+    // {label: 'Monospace', style: 'CODE'},
   ];
 
   const InlineStyleControls = (props) => {

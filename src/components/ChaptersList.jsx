@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import ChapterDetail from "../pages/ChapterDetail";
+import ChapterDetail from "../pages/chapters/ChapterDetail";
 import { getAllChaptersService } from "../services/chapter.services";
 import { ClipLoader } from "react-spinners";
 

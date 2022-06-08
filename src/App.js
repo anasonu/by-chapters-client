@@ -4,14 +4,16 @@ import Navbar from "./components/Navbar";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Home from "./pages/Home";
-import Error from "./pages/Error";
-import AddBook from "./pages/AddBook";
-import BookDetail from "./pages/BookDetail";
-import ChapterDetail from "./pages/ChapterDetail";
-import NotFound from "./pages/NotFound";
-import Profile from "./pages/Profile";
+import Error from "./pages/error-pages/Error";
+import AddBook from "./pages/books/AddBook";
+import BookDetail from "./pages/books/BookDetail";
+import ChapterDetail from "./pages/chapters/ChapterDetail";
+import NotFound from "./pages/error-pages/NotFound";
+import Profile from "./pages/profile/Profile";
 import IsPrivate from "./components/IsPrivate";
-import AddChapter from "./pages/AddChapter";
+import AddChapter from "./pages/chapters/AddChapter";
+import EditChapter from "./pages/chapters/EditChapter";
+import EditBook from "./pages/books/EditBook";
 
 function App() {
   return (
@@ -23,6 +25,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/books/:bookId" element={<BookDetail />} />
+        <Route
+          path="/books/:bookId/edit"
+          element={
+            <IsPrivate>
+              <EditBook />
+            </IsPrivate>
+          }
+        />
         <Route
           path="/new-book"
           element={
@@ -44,6 +54,14 @@ function App() {
           element={
             <IsPrivate>
               <ChapterDetail />
+            </IsPrivate>
+          }
+        />
+        <Route
+          path="/books/:bookId/:chapterId/edit"
+          element={
+            <IsPrivate>
+              <EditChapter />
             </IsPrivate>
           }
         />

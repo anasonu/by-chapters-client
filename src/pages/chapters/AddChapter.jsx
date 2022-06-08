@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import MyEditor from "../components/MyEditor";
-import TextEditor from "../components/TextEditor";
-import { addChapterService } from "../services/chapter.services";
-import { Editor, EditorState, convertFromRaw, convertToRaw } from "draft-js";
+import MyEditor from "../../components/MyEditor";
+// import TextEditor from "../components/TextEditor";
+import { addChapterService } from "../../services/chapter.services";
+import { convertToRaw } from "draft-js";
 
 function AddChapter() {
   const navigate = useNavigate();
@@ -32,15 +32,10 @@ function AddChapter() {
   };
 
   const handleClick = (chapter) => {
-    // console.log(title, chapter);
-    // console.log("====================>>>>>>>>>>>>>>", chapter.getCurrentContent());
     const content = chapter.getCurrentContent();
     const raw = convertToRaw(content);
     setContent(raw);
-    // setContent(JSON.stringify(raw));
-    console.log("============>>>>>>>>>", JSON.stringify(raw))
-    console.log("============>>>>>>>>>", title, raw)
-  }
+  };
 
   return (
     <div>
@@ -55,32 +50,15 @@ function AddChapter() {
         />
         <br />
         <br />
-        {/* <label htmlFor="content">Escribe aquí tu capítulo</label> */}
-        {/* <textarea
-          name="content"
-          cols="30"
-          rows="10"
+        <MyEditor
+          handleClick={handleClick}
           onChange={handleContentChange}
           value={content}
-        ></textarea>
-
-        <button>Publicar capítulo</button> */}
-      
-
-        {/* <MyEditor handleClick={handleClick} onChange={handleContentChange} value={content} /> */}
-        <MyEditor handleClick={handleClick} onChange={handleContentChange} value={content} />
-
+        />
+        {/* <TextEditor handleClick={handleClick} onChange={handleContentChange} value={content} /> */}
         <br />
         <br />
-       
       </form>
-      
-      {/* <br />
-      <br />
-      <br />
-      <br />
-
-      <TextEditor /> */}
     </div>
   );
 }

@@ -3,11 +3,11 @@ import { Editor, EditorState } from "draft-js";
 import "draft-js/dist/Draft.css";
 import "../../node_modules/draft-js/dist/Draft.css";
 
-function MyEditor(props) {
+function EditEditor(props) {
   const { handleClick } = props;
 
   const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
+    EditorState.createWithContent()
   );
 
   return (
@@ -25,4 +25,4 @@ function MyEditor(props) {
   );
 }
 
-export default MyEditor;
+export default EditEditor;

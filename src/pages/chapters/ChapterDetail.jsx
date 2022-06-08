@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import { getChapterDetailService } from "../services/chapter.services";
+import { getChapterDetailService } from "../../services/chapter.services";
 
 function ChapterDetail() {
   const { bookId, chapterId } = useParams();
@@ -28,19 +28,15 @@ function ChapterDetail() {
 
   return (
     <div className="chapter-detail-container">
-      <Link to={`/books/${bookId}`} className="chapter-detail-book-title">← {chapterDetail.book.title}</Link>
+      <Link to={`/books/${bookId}`} className="chapter-detail-book-title">
+        ← {chapterDetail.book.title}
+      </Link>
       <br />
       <h3>{chapterDetail.title}</h3>
-      {/* <p>{chapterDetail.content}</p> */}
-      {/* <p>{chapterDetail.content.blocks[0].text}</p> */}
-      {
-        chapterDetail.content.blocks.map((eachParagraph) => {
-          return <p>{eachParagraph.text}</p>
-        })
-      }
 
-
-      {/* <p>{JSON.parse(chapterDetail.content.blocks)}</p> */}
+      {chapterDetail.content.blocks.map((eachParagraph) => {
+        return <p>{eachParagraph.text}</p>;
+      })}
     </div>
   );
 }
