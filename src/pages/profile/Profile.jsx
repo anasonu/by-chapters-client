@@ -28,11 +28,17 @@ function Profile() {
   }
 
   return (
-    <div>
-      <h3>Mi perfil</h3>
-      <h4>{user.username}</h4>
-      <p>{user.email}</p>
-      <p>{user.description}</p>
+    <div className="profile-container">
+      <h2>Mi perfil</h2>
+      <div className="profile-info-container">
+        <p>
+          Nombre de usuario: <b>{user.username}</b>
+        </p>
+        <p>
+          Correo electrónico: <b>{user.email}</b>
+        </p>
+        <p className="profile-description">{user.description}</p>
+      </div>
       <h3>Mis libros publicados</h3>
       {booksCreated === null && <ClipLoader color={"black"} />}
       <div className="all-books-container">

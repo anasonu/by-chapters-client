@@ -13,13 +13,13 @@ function AddBook() {
   const handleDescriptionChange = (event) => setDescription(event.target.value);
   const handleImgChange = async (event) => {
     const uploadForm = new FormData();
-    uploadForm.append("img", event.target.files[0])
+    uploadForm.append("img", event.target.files[0]);
 
     try {
-      const response = await uploadPicService(uploadForm)
-      setImg(response.data)
+      const response = await uploadPicService(uploadForm);
+      setImg(response.data);
     } catch (error) {
-      navigate("/error")
+      navigate("/error");
     }
   };
 
@@ -30,7 +30,7 @@ function AddBook() {
       title,
       description,
       img,
-    }
+    };
 
     try {
       await addBookService(newBook);
@@ -42,36 +42,52 @@ function AddBook() {
 
   return (
     <div>
-      <h2>Crea tu propio libro</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="img">Imagen de portada</label>
-        <br />
-        <input type="file" name="img" onChange={handleImgChange} />
-        <br />
-        <br />
-        <img src={img} alt="Book Cover" />
-        <br />
-        <br />
-        <label htmlFor="title">Título del libro</label>
-        <input
-          type="text"
-          name="title"
-          onChange={handleTitleChange}
-          value={title}
-        />
-        <br />
-        <br />
-        <label htmlFor="description">¿Sobre qué trata tu libro?</label>
-        <textarea
-          name="description"
-          cols="30"
-          rows="10"
-          onChange={handleDescriptionChange}
-          value={description}
-        ></textarea>
-        <br />
-        <br />
-        <button>Crear libro</button>
+      <h2 className="add-book-section-title">Crea tu propio libro</h2>
+      <form onSubmit={handleSubmit} className="form">
+        <div>
+          {img ? (
+            <img src={img} alt="Book Cover" />
+          ) : (
+            <div className="no-img">
+              <p>No hay ninguna imagen seleccionada</p>
+            </div>
+          )}
+          <br />
+          <input
+            type="file"
+            name="img"
+            id="img"
+            onChange={handleImgChange}
+            className="file-input"
+          />
+          <label htmlFor="img" className="img-label">
+            Selecciona la imagen de portada de tu libro
+          </label>
+        </div>
+        <div className="add-book-text-container">
+          <label htmlFor="title">Título del libro</label>
+          <br />
+          <input
+            type="text"
+            name="title"
+            onChange={handleTitleChange}
+            value={title}
+          />
+          <br />
+          <br />
+          <label htmlFor="description">¿Sobre qué trata tu libro?</label>
+          <br />
+          <textarea
+            name="description"
+            cols="30"
+            rows="10"
+            onChange={handleDescriptionChange}
+            value={description}
+          ></textarea>
+          <br />
+          <br />
+          <button>Crear libro</button>
+        </div>
       </form>
     </div>
   );

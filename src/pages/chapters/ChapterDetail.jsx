@@ -37,7 +37,7 @@ function ChapterDetail() {
       <br />
 
       { isLoggedIn && user._id == chapterDetail.author._id && (
-        <Link to={`/books/${bookId}/edit`}>Editar capítulo</Link>
+        <Link to={`/books/${bookId}/edit`} className="edit-btn-link">Editar capítulo</Link>
       )}
 
       <h3>{chapterDetail.title}</h3>

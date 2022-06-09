@@ -28,9 +28,12 @@ function AuthorProfile() {
   }
 
   return (
-    <div>
+    <div className="profile-container">
       <h3>Perfil de {authorDetails.username}</h3>
-      <p>{authorDetails.description}</p>
+    <div className="profile-info-container">
+      <p className="profile-description">{authorDetails.description}</p>
+
+    </div>
       <PublishedBooks authorDetails={authorDetails} />
     </div>
   );

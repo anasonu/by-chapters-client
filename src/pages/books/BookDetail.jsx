@@ -35,14 +35,17 @@ function BookDetail() {
 
   return (
     <div className="book-detail-container">
-      {isLoggedIn && user._id == bookDetail.author._id && (
-        <Link to={`/books/${bookId}/edit`}>Editar libro</Link>
-      )}
-      <img
-        src={bookDetail.img}
-        alt={bookDetail.title}
-        className="book-detail-img"
-      />
+        {isLoggedIn && user._id == bookDetail.author._id && (
+          <Link to={`/books/${bookId}/edit`} className="edit-btn-link">
+            Editar libro
+          </Link>
+        )}
+        <br />
+        <img
+          src={bookDetail.img}
+          alt={bookDetail.title}
+          className="book-detail-img"
+        />
       <div className="flex-space-between">
         <h2 className="book-detail-title">{bookDetail.title}</h2>
         {isLoggedIn && user._id == bookDetail.author._id && (
@@ -51,7 +54,13 @@ function BookDetail() {
           </button>
         )}
       </div>
-      <Link to={`/author/${bookDetail.author._id}`} className="book-detail-author">{bookDetail.author.username}</Link>
+      <span>Autor: </span>
+      <Link
+        to={`/author/${bookDetail.author._id}`}
+        className="book-detail-author"
+      >
+        {bookDetail.author.username}
+      </Link>
       <p className="book-detail-description">{bookDetail.description}</p>
       <ChaptersList />
     </div>
