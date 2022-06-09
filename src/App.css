@@ -87,6 +87,9 @@ body {
   padding: 16px 24px;
   position: relative;
   border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font: inherit;
 }
 
 .new-book-btn:hover {
@@ -161,7 +164,7 @@ body {
 .all-books-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: left; */
   gap: 12px;
 }
 
@@ -178,6 +181,7 @@ hr {
   border: none;
   padding: 16px;
   position: relative;
+  margin: 0 auto;
 }
 
 .book-container img {
@@ -217,9 +221,10 @@ hr {
   font-weight: bold;
 }
 
-.book-description {
+/* .book-description {
   min-width: 920px;
-}
+  min-width: 100%;
+} */
 
 @media (min-width: 768px) {
   .book-container {
@@ -383,11 +388,12 @@ hr {
 
 .text-editor {
   background-color: white;
-  box-shadow: 2px 2px 6px #d8d8d8;
+  /* box-shadow: 2px 2px 6px #d8d8d8; */
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
   padding: 56px;
-  width: 60vw;
+  width: 50vw;
   margin: 0 auto;
-  min-height: 1200px;
+  min-height: 400px;
   box-sizing: border-box;
 }
 
@@ -420,45 +426,87 @@ input[type="file"] {
 
 .form {
   display: flex;
-  /* flex-direction: column; */
-  /* align-items: center; */
   justify-content: center;
+  align-items: flex-start;
   gap: 56px;
+  margin-bottom: 32px;
 }
 
 .no-img {
-  background-color: #fcf2f2;
-  padding: 40px 40px;
+  background-color: #f6f3f3;
+  padding: 60px 40px;
+  margin-top: 20px;
+}
+
+.form img{
+  margin-top: 20px;
 }
 
 .img-label {
   display: inline-block;
-  background-color: #009057;
-  color: white;
+  border: 1px solid #009057;
+  color: #009057;
   padding: 16px 32px;
-  margin-top: 56px;
+  margin-top: 32px;
   margin-bottom: 40px;
   cursor: pointer;
   border-radius: 8px;
-  position: relative;
-  box-shadow: 0 8px 12px #a7cabc;
 }
 
 .img-label:hover{
-  box-shadow: 8px 8px 12px #a7cabc;
-  top: -2px;
-  left: -2px;
+  background-color: #009057;
+  color: white;
 }
 
 .img-label:active {
-  background-color: #009057;
+  background-color: #018651;
   box-shadow: none;
-  top: 0;
-  left: 0;
 }
 
 .add-book-text-container {
   text-align: left;
+}
+
+.regular-label{
+  color: #a8a7a7;
+}
+
+.input-text {
+  border: none;
+  width: 360px;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .1);
+  outline: none;
+  padding: 22px 18px;
+  font: inherit;
+}
+
+/* EDITAR UN LIBRO */
+
+.edit-btn {
+  background-color: transparent;
+  font: inherit;
+}
+
+.delete-btn {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  font: inherit;
+  text-decoration: underline;
+}
+
+.delete-btn:hover {
+  color: #F03E3E;
+}
+
+.delete-btn:active {
+  color: black;
+}
+
+/* EDITAR UN CAPÍTULO */
+
+.next {
+  
 }
 
 

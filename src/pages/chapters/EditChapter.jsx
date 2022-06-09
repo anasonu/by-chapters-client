@@ -50,7 +50,10 @@ function EditChapter() {
 
   return (
     <div>
-      <h2>Estás editando tu capítulo</h2>
+    <h3 className='next'>PRÓXIMAMENTE</h3>
+    <br />
+    <br />
+      {/* <h2>Estás editando tu capítulo</h2> */}
       {/* <form onSubmit={handleSubmit}>
         <label htmlFor="title">Título: </label>
         <input type="text" name="title" onChange={handleTitleChange} value={title} />
@@ -62,7 +65,7 @@ function EditChapter() {
           value={content}
         />
       </form> */}
-      <button onClick={handleDelete}>Eliminar capítulo</button>
+      <button onClick={handleDelete} className="delete-btn">Eliminar capítulo</button>
     </div>
   )
 }

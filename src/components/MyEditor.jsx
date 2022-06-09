@@ -18,7 +18,9 @@ function MyEditor(props) {
           onChange={(editorState) => setEditorState(editorState)}
         />
       </div>
-      <button onClick={() => handleClick(editorState)}>
+      <br />
+      <br />
+      <button onClick={() => handleClick(editorState)} className="new-book-btn">
         Publicar capítulo
       </button>
     </>

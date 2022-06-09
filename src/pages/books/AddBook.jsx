@@ -43,51 +43,57 @@ function AddBook() {
   return (
     <div>
       <h2 className="add-book-section-title">Crea tu propio libro</h2>
-      <form onSubmit={handleSubmit} className="form">
-        <div>
-          {img ? (
-            <img src={img} alt="Book Cover" />
-          ) : (
-            <div className="no-img">
-              <p>No hay ninguna imagen seleccionada</p>
-            </div>
-          )}
-          <br />
-          <input
-            type="file"
-            name="img"
-            id="img"
-            onChange={handleImgChange}
-            className="file-input"
-          />
-          <label htmlFor="img" className="img-label">
-            Selecciona la imagen de portada de tu libro
-          </label>
+      <form onSubmit={handleSubmit}>
+        <div className="form">
+          <div>
+            {img ? (
+              <img src={img} alt="Book Cover" />
+            ) : (
+              <div className="no-img">
+                <p>No hay ninguna imagen seleccionada</p>
+              </div>
+            )}
+            <br />
+            <input
+              type="file"
+              name="img"
+              id="img"
+              onChange={handleImgChange}
+              className="file-input"
+            />
+            <label htmlFor="img" className="img-label">
+              Selecciona la imagen de portada
+            </label>
+          </div>
+          <div className="add-book-text-container">
+            {/* <label htmlFor="title" className="regular-label">Título del libro</label> */}
+            <br />
+            <input
+              type="text"
+              name="title"
+              onChange={handleTitleChange}
+              value={title}
+              className="input-text"
+              placeholder="Título del libro"
+            />
+            <br />
+            <br />
+            {/* <label htmlFor="description" className="regular-label">¿Sobre qué trata tu libro?</label> */}
+            <br />
+            <textarea
+              name="description"
+              cols="30"
+              rows="10"
+              onChange={handleDescriptionChange}
+              value={description}
+              className="input-text"
+              placeholder="¿Sobre qué trata tu libro?"
+            ></textarea>
+            <br />
+            <br />
+          </div>
         </div>
-        <div className="add-book-text-container">
-          <label htmlFor="title">Título del libro</label>
-          <br />
-          <input
-            type="text"
-            name="title"
-            onChange={handleTitleChange}
-            value={title}
-          />
-          <br />
-          <br />
-          <label htmlFor="description">¿Sobre qué trata tu libro?</label>
-          <br />
-          <textarea
-            name="description"
-            cols="30"
-            rows="10"
-            onChange={handleDescriptionChange}
-            value={description}
-          ></textarea>
-          <br />
-          <br />
-          <button>Crear libro</button>
-        </div>
+        <button className="new-book-btn">Crear libro</button>
       </form>
     </div>
   );

@@ -43,26 +43,30 @@ function Login() {
     <div>
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
-        <label htmlFor="email">Email: </label>
+        {/* <label htmlFor="email">Email: </label> */}
         <input
           type="email"
           name="email"
           value={email}
           onChange={handleEmailChange}
+          className="input-text"
+          placeholder="Correo Electrónico"
         />
         <br />
         <br />
-        <label htmlFor="password">Password: </label>
+        {/* <label htmlFor="password">Password: </label> */}
         <input
           type="password"
           name="password"
           value={password}
           onChange={handlePasswordChange}
+          className="input-text"
+          placeholder="Contraseña"
         />
         <br />
         <br />
         {errorMessage !== null && <p>{errorMessage}</p>}
-        <button>Login</button>
+        <button className="new-book-btn">Login</button>
       </form>
     </div>
   );

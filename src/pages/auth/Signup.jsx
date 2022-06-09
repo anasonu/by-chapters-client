@@ -47,45 +47,49 @@ function Signup() {
     <div>
       <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
         <input
           type="text"
           name="username"
           onChange={handleChange}
           value={form.username}
+          className="input-text"
+          placeholder="Nombre de usuario"
         />
         <br />
         <br />
-        <label htmlFor="description">Cuéntanos quien eres: </label>
         <textarea
           name="description"
           cols="30"
           rows="10"
           onChange={handleChange}
           value={form.description}
+          className="input-text"
+          placeholder="Cuéntale a tus lectores quien eres"
         ></textarea>
         <br />
         <br />
-        <label htmlFor="email">Email: </label>
         <input
           type="email"
           name="email"
           onChange={handleChange}
           value={form.email}
+          className="input-text"
+          placeholder="Correo electrónico"
         />
         <br />
         <br />
-        <label htmlFor="password">Password: </label>
         <input
           type="password"
           name="password"
           onChange={handleChange}
           value={form.password}
+          className="input-text"
+          placeholder="Contraseña"
         />
         <br />
         <br />
         {errorMessage !== null && <p>{errorMessage}</p>}
-        <button>Signup</button>
+        <button className="new-book-btn">Signup</button>
       </form>
     </div>
   );
