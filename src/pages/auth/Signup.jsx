@@ -89,7 +89,7 @@ function Signup() {
         <br />
         <br />
         {errorMessage !== null && <p>{errorMessage}</p>}
-        <button className="new-book-btn">Signup</button>
+        <button className="new-book-btn auth">Signup</button>
       </form>
     </div>
   );

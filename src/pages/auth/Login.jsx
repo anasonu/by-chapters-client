@@ -40,7 +40,7 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="auth-div">
       <h2>Login</h2>
       <form onSubmit={handleLogin}>
         {/* <label htmlFor="email">Email: </label> */}
@@ -66,7 +66,7 @@ function Login() {
         <br />
         <br />
         {errorMessage !== null && <p>{errorMessage}</p>}
-        <button className="new-book-btn">Login</button>
+        <button className="new-book-btn auth">Login</button>
       </form>
     </div>
   );

@@ -505,8 +505,13 @@ input[type="file"] {
 
 /* EDITAR UN CAPÍTULO */
 
-.next {
-  
+
+
+/* LOGIN Y SIGNUP */
+
+.auth {
+  width: 400px;
+  margin-top: 24px;
 }
 
 
