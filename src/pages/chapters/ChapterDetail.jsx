@@ -7,7 +7,7 @@ import { AuthContext } from "../../context/auth.context.js";
 function ChapterDetail() {
   const { bookId, chapterId } = useParams();
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user, isLoggedIn } = useContext(AuthContext);
 
   const [chapterDetail, setChapterDetail] = useState(null);
 
@@ -36,8 +36,8 @@ function ChapterDetail() {
 
       <br />
 
-      {user._id === chapterDetail.author._id && (
-        <Link to={`/books/${bookId}/${chapterId}/edit`}>Editar capítulo</Link>
+      { isLoggedIn && user._id == chapterDetail.author._id && (
+        <Link to={`/books/${bookId}/edit`}>Editar capítulo</Link>
       )}
 
       <h3>{chapterDetail.title}</h3>

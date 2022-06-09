@@ -7,32 +7,26 @@ function Signup() {
 
   const [form, setForm] = useState({
     username: "",
-    name: "",
-    lastName: "",
+    description: "",
     email: "",
     password: "",
   });
   const [errorMessage, setErrorMessage] = useState(null);
 
   const handleChange = (event) => {
-    const { username, name, lastName, email, password, value } = event.target;
+    const { name, value } = event.target;
     const formCopy = { ...form };
-    formCopy[username] = value;
     formCopy[name] = value;
-    formCopy[lastName] = value;
-    formCopy[email] = value;
-    formCopy[password] = value;
     setForm(formCopy);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { username, name, lastName, email, password } = form;
+    const { username, description, email, password } = form;
     const user = {
       username,
-      name,
-      lastName,
+      description,
       email,
       password,
     };
@@ -62,22 +56,14 @@ function Signup() {
         />
         <br />
         <br />
-        <label htmlFor="name">Name: </label>
-        <input
-          type="text"
-          name="name"
+        <label htmlFor="description">Cuéntanos quien eres: </label>
+        <textarea
+          name="description"
+          cols="30"
+          rows="10"
           onChange={handleChange}
-          value={form.name}
-        />
-        <br />
-        <br />
-        <label htmlFor="lastName">Last Name: </label>
-        <input
-          type="text"
-          name="lastName"
-          onChange={handleChange}
-          value={form.lastName}
-        />
+          value={form.description}
+        ></textarea>
         <br />
         <br />
         <label htmlFor="email">Email: </label>

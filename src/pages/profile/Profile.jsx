@@ -32,6 +32,7 @@ function Profile() {
       <h3>Mi perfil</h3>
       <h4>{user.username}</h4>
       <p>{user.email}</p>
+      <p>{user.description}</p>
       <h3>Mis libros publicados</h3>
       {booksCreated === null && <ClipLoader color={"black"} />}
       <div className="all-books-container">
