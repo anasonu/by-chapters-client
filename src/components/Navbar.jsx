@@ -18,15 +18,12 @@ function Navbar() {
     <div>
       {isLoggedIn ? (
         <nav className="navbar">
-          <div>
+          <div className="hover-navbar">
             <NavLink to="/" className={activeClass}>
               Inicio
             </NavLink>
           </div>
           <div className="links-nav-container">
-            {/* {user !== null && <p>¡Hola, {user.username}!</p>} */}
-
-
             <div className="dropdown">
               <button className="dropbtn">{user !== null && <p>¡Hola, {user.username}! ▾</p>}</button>
               <div className="dropdown-content">
@@ -36,11 +33,6 @@ function Navbar() {
                 </button>
                 </div>
             </div>
-
-
-            {/* <button onClick={handleLogout} className="logout-btn">
-              Cerrar sesión
-            </button> */}
             <NavLink to="/new-book" className={`${activeClass} new-book-btn`}>
               Nuevo libro
             </NavLink>
@@ -48,12 +40,12 @@ function Navbar() {
         </nav>
       ) : (
         <nav className="navbar">
-          <div>
+          <div className="hover-navbar">
             <NavLink to="/" className={activeClass}>
               Inicio
             </NavLink>
           </div>
-          <div className="links-nav-container">
+          <div className="links-nav-container hover-navbar">
             <NavLink to="/login" className={activeClass}>
               Login
             </NavLink>

@@ -39,14 +39,16 @@ function AddChapter() {
 
   return (
     <div>
-      <h2>Agrega un nuevo capítulo a tu libro</h2>
+      <h2 className="add-book-section-title">Agrega un nuevo capítulo a tu libro</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Título del capítulo</label>
+        {/* <label htmlFor="title">Título del capítulo</label> */}
         <input
           type="text"
           name="title"
           onChange={handleTitleChange}
           value={title}
+          className="input-text"
+          placeholder="Título del capítulo"
         />
         <br />
         <br />

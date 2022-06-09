@@ -7,32 +7,26 @@ function Signup() {
 
   const [form, setForm] = useState({
     username: "",
-    name: "",
-    lastName: "",
+    description: "",
     email: "",
     password: "",
   });
   const [errorMessage, setErrorMessage] = useState(null);
 
   const handleChange = (event) => {
-    const { username, name, lastName, email, password, value } = event.target;
+    const { name, value } = event.target;
     const formCopy = { ...form };
-    formCopy[username] = value;
     formCopy[name] = value;
-    formCopy[lastName] = value;
-    formCopy[email] = value;
-    formCopy[password] = value;
     setForm(formCopy);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { username, name, lastName, email, password } = form;
+    const { username, description, email, password } = form;
     const user = {
       username,
-      name,
-      lastName,
+      description,
       email,
       password,
     };
@@ -53,53 +47,48 @@ function Signup() {
     <div>
       <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
         <input
           type="text"
           name="username"
           onChange={handleChange}
           value={form.username}
+          className="input-text"
+          placeholder="Nombre de usuario*"
         />
         <br />
         <br />
-        <label htmlFor="name">Name: </label>
-        <input
-          type="text"
-          name="name"
+        <textarea
+          name="description"
+          cols="30"
+          rows="10"
           onChange={handleChange}
-          value={form.name}
-        />
+          value={form.description}
+          className="input-text"
+          placeholder="Cuéntale a tus lectores quien eres"
+        ></textarea>
         <br />
         <br />
-        <label htmlFor="lastName">Last Name: </label>
-        <input
-          type="text"
-          name="lastName"
-          onChange={handleChange}
-          value={form.lastName}
-        />
-        <br />
-        <br />
-        <label htmlFor="email">Email: </label>
         <input
           type="email"
           name="email"
           onChange={handleChange}
           value={form.email}
+          className="input-text"
+          placeholder="Correo electrónico*"
         />
         <br />
         <br />
-        <label htmlFor="password">Password: </label>
         <input
           type="password"
           name="password"
           onChange={handleChange}
           value={form.password}
+          className="input-text"
+          placeholder="Contraseña*"
         />
         <br />
-        <br />
-        {errorMessage !== null && <p>{errorMessage}</p>}
-        <button>Signup</button>
+        {errorMessage !== null && <p className="error-message">{errorMessage}</p>}
+        <button className="new-book-btn auth">Signup</button>
       </form>
     </div>
   );

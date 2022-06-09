@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { getChapterDetailService } from "../../services/chapter.services";
+import { AuthContext } from "../../context/auth.context.js";
 
 function ChapterDetail() {
   const { bookId, chapterId } = useParams();
   const navigate = useNavigate();
+  const { user, isLoggedIn } = useContext(AuthContext);
 
   const [chapterDetail, setChapterDetail] = useState(null);
 
@@ -31,7 +33,13 @@ function ChapterDetail() {
       <Link to={`/books/${bookId}`} className="chapter-detail-book-title">
         ← {chapterDetail.book.title}
       </Link>
+
       <br />
+
+      { isLoggedIn && user._id == chapterDetail.author._id && (
+        <Link to={`/books/${bookId}/${chapterId}/edit`} className="edit-btn-link">Editar capítulo</Link>
+      )}
+
       <h3>{chapterDetail.title}</h3>
 
       {chapterDetail.content.blocks.map((eachParagraph) => {
