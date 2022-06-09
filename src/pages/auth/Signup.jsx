@@ -53,7 +53,7 @@ function Signup() {
           onChange={handleChange}
           value={form.username}
           className="input-text"
-          placeholder="Nombre de usuario"
+          placeholder="Nombre de usuario*"
         />
         <br />
         <br />
@@ -74,7 +74,7 @@ function Signup() {
           onChange={handleChange}
           value={form.email}
           className="input-text"
-          placeholder="Correo electrónico"
+          placeholder="Correo electrónico*"
         />
         <br />
         <br />
@@ -84,11 +84,10 @@ function Signup() {
           onChange={handleChange}
           value={form.password}
           className="input-text"
-          placeholder="Contraseña"
+          placeholder="Contraseña*"
         />
         <br />
-        <br />
-        {errorMessage !== null && <p>{errorMessage}</p>}
+        {errorMessage !== null && <p className="error-message">{errorMessage}</p>}
         <button className="new-book-btn auth">Signup</button>
       </form>
     </div>

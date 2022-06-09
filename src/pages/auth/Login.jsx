@@ -50,7 +50,7 @@ function Login() {
           value={email}
           onChange={handleEmailChange}
           className="input-text"
-          placeholder="Correo Electrónico"
+          placeholder="Correo Electrónico*"
         />
         <br />
         <br />
@@ -61,11 +61,10 @@ function Login() {
           value={password}
           onChange={handlePasswordChange}
           className="input-text"
-          placeholder="Contraseña"
+          placeholder="Contraseña*"
         />
         <br />
-        <br />
-        {errorMessage !== null && <p>{errorMessage}</p>}
+        {errorMessage !== null && <p className="error-message">{errorMessage}</p>}
         <button className="new-book-btn auth">Login</button>
       </form>
     </div>
