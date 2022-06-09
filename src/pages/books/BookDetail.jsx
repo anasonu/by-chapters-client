@@ -6,7 +6,7 @@ import { getBookDetailService } from "../../services/book.services";
 import { AuthContext } from "../../context/auth.context.js";
 
 function BookDetail() {
-  const { user } = useContext(AuthContext);
+  const { user, isLoggedIn } = useContext(AuthContext);
   const { bookId } = useParams();
   const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ function BookDetail() {
 
   return (
     <div className="book-detail-container">
-      {user._id === bookDetail.author._id && (
+      {isLoggedIn && user._id == bookDetail.author._id && (
         <Link to={`/books/${bookId}/edit`}>Editar libro</Link>
       )}
       <img
@@ -45,13 +45,13 @@ function BookDetail() {
       />
       <div className="flex-space-between">
         <h2 className="book-detail-title">{bookDetail.title}</h2>
-        {user._id === bookDetail.author._id && (
+        {isLoggedIn && user._id == bookDetail.author._id && (
           <button onClick={goToChapterForm} className="add-chapter-btn">
             + Capítulo
           </button>
         )}
       </div>
-      <h3 className="book-detail-author">{bookDetail.author.username}</h3>
+      <Link to={`/author/${bookDetail.author._id}`} className="book-detail-author">{bookDetail.author.username}</Link>
       <p className="book-detail-description">{bookDetail.description}</p>
       <ChaptersList />
     </div>

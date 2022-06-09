@@ -14,6 +14,7 @@ import IsPrivate from "./components/IsPrivate";
 import AddChapter from "./pages/chapters/AddChapter";
 import EditChapter from "./pages/chapters/EditChapter";
 import EditBook from "./pages/books/EditBook";
+import AuthorProfile from "./pages/profile/AuthorProfile";
 
 function App() {
   return (
@@ -73,6 +74,7 @@ function App() {
             </IsPrivate>
           }
         />
+        <Route path="/author/:authorId" element={<AuthorProfile />} />
 
         <Route path="/error" element={<Error />} />
         <Route path="/*" element={<NotFound />} />

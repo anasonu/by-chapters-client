@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
-import { AuthContext } from "../../context/auth.context.js";
-import { getBooksByAuthorService } from "../../services/book.services.js";
+import { getBooksByAuthorService } from "../services/book.services";
 
-function Profile() {
+function PublishedBooks(props) {
+    const {authorDetails} = props;
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { authorId } = useParams();
 
   const [booksCreated, setBooksCreated] = useState(null);
 
@@ -16,7 +16,7 @@ function Profile() {
 
   const getBooksCreated = async () => {
     try {
-      const response = await getBooksByAuthorService(user._id);
+      const response = await getBooksByAuthorService(authorId);
       setBooksCreated(response.data);
     } catch (error) {
       navigate("/error");
@@ -29,10 +29,7 @@ function Profile() {
 
   return (
     <div>
-      <h3>Mi perfil</h3>
-      <h4>{user.username}</h4>
-      <p>{user.email}</p>
-      <h3>Mis libros publicados</h3>
+      <h3>Libros publicados</h3>
       {booksCreated === null && <ClipLoader color={"black"} />}
       <div className="all-books-container">
         {booksCreated !== null &&
@@ -49,7 +46,9 @@ function Profile() {
                     <p className="book-title">{eachBook.title}</p>
                     <p className="book-author">
                       Publicado por:{" "}
-                      <span className="author-name">{user.username}</span>
+                      <span className="author-name">
+                        {authorDetails.username}
+                      </span>
                     </p>
                     <p className="book-description">{eachBook.description}</p>
                   </div>
@@ -62,4 +61,4 @@ function Profile() {
   );
 }
 
-export default Profile;
+export default PublishedBooks;
